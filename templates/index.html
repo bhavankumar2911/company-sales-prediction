@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Sales Prediction</title>
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main
+      class="mx-auto w-11/12 md:flex md:items-center ms:justify-center md:min-h-screen md:w-3/4"
+    >
+      <div class="md:w-1/2 md:pr-28">
+        <h1 class="text-2xl font-black text-orange-500 mt-10 mb-5 md:text-4xl">
+          Company Sales Prediction
+        </h1>
+        <p class="text-gray-600">
+          A prediction system for predicting sales amount generated based on
+          money spent on various marketing platforms
+        </p>
+        <form action="/predict" method="post" class="mt-10">
+          <div class="mt-3">
+            <label for="tv" class="block text-orange-800"
+              >Enter amount spent on TV Ads</label
+            >
+            <input
+              type="number"
+              name="tv"
+              id="tv"
+              step="any"
+              min="0"
+              class="border-b border-gray-300 w-full py-2 outline-0 text-gray-600"
+            />
+          </div>
+          <div class="mt-3">
+            <label for="radio" class="block text-orange-800"
+              >Enter amount spent on Radio Ads</label
+            >
+            <input
+              type="number"
+              name="radio"
+              id="radio"
+              step="any"
+              min="0"
+              class="border-b border-gray-300 w-full py-2 outline-0 text-gray-600"
+            />
+          </div>
+          <div class="mt-3">
+            <label for="newspaper" class="block text-orange-800"
+              >Enter amount spent on Newspaper Ads</label
+            >
+            <input
+              type="number"
+              name="newspaper"
+              id="newspaper"
+              step="any"
+              min="0"
+              class="border-b border-gray-300 w-full py-2 outline-0 text-gray-600"
+            />
+          </div>
+
+          {% if predicted_sales_amount %}
+          <p
+            class="mt-5 text-center border border-orange-500 py-3 rounded font-bold"
+          >
+            Predicted sales amount: {{predicted_sales_amount}}
+          </p>
+          {% else %}
+          <span></span>
+          {% endif %}
+          <input
+            type="submit"
+            value="Predict Sales Amount"
+            class="w-full bg-orange-500 text-white font-semibold py-3 mt-5 rounded hover:bg-orange-600 cursor-pointer"
+          />
+        </form>
+      </div>
+      <div class="hidden md:block w-1/2 pl-20">
+        <img
+          src="/static/marketing.png"
+          alt="marketing image"
+          style="width: 60%"
+          class="translate-y-5 opacity-90"
+        />
+      </div>
+    </main>
+  </body>
+</html>
